@@ -29,7 +29,6 @@ public class GameManager : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            Debug.Log("esc Pressed");
             PauseGame();
         }
 
@@ -78,14 +77,12 @@ public class GameManager : MonoBehaviour
     {
         if (gameState != GameState.Pause)
         {
-            Debug.Log("paused");
             gameState = GameState.Pause;
             Time.timeScale = 0;
         }
         else if (gameState == GameState.Pause)
         {
             //this is where i would go back to the previous state
-            Debug.Log("unpaused");
             gameState = GameState.MainMenu;
             Time.timeScale = 1;
         }
