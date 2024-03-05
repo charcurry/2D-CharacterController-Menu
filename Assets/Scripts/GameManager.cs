@@ -1,10 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
     private UIManager uiManager;
+
+    private CharacterController2D player;
+    public GameObject playerSprite;
+    public GameObject spawnPoint;
 
     public enum GameState
     {
@@ -20,6 +25,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         uiManager = FindObjectOfType<UIManager>();
+        player = FindObjectOfType<CharacterController2D>();
         gameState = GameState.MainMenu;
     }
 
@@ -52,12 +58,14 @@ public class GameManager : MonoBehaviour
     private void MainMenu()
     {
         Cursor.visible = true;
+        playerSprite.SetActive(false);
         uiManager.UIMainMenu();
     }
 
     private void Gameplay()
     {
         Cursor.visible = false;
+        playerSprite.SetActive(true);
         uiManager.UIGameplay();
     }
 
@@ -83,7 +91,7 @@ public class GameManager : MonoBehaviour
         else if (gameState == GameState.Pause)
         {
             //this is where i would go back to the previous state
-            gameState = GameState.MainMenu;
+            gameState = GameState.Gameplay;
             Time.timeScale = 1;
         }
     }
@@ -91,6 +99,12 @@ public class GameManager : MonoBehaviour
     public void QuitGame()
     {
         Application.Quit();
+    }
+
+    public void MovePlayerToSpawnPoint()
+    {
+        spawnPoint = GameObject.FindWithTag("SpawnPoint");
+        player.transform.position = spawnPoint.transform.position;
     }
 
 }

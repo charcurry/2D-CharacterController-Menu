@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -14,10 +15,18 @@ public class LevelManager : MonoBehaviour
 
     public void LoadScene(string levelName)
     {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+
         if (levelName.StartsWith("Gameplay"))
         {
             gameManager.gameState = GameManager.GameState.Gameplay;
         }
         SceneManager.LoadScene(levelName);
+    }
+
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        gameManager.MovePlayerToSpawnPoint();
+        SceneManager.sceneLoaded -= OnSceneLoaded;
     }
 }
