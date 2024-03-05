@@ -16,7 +16,9 @@ public class GameManager : MonoBehaviour
         MainMenu,
         Gameplay,
         Settings,
-        Pause
+        Pause,
+        GameOver,
+        GameWin
     }
 
     public GameState gameState;
@@ -51,6 +53,10 @@ public class GameManager : MonoBehaviour
                 break;
             case GameState.Settings:
                 Settings();
+                break;
+            case GameState.GameOver:
+                break;
+            case GameState.GameWin:
                 break;
         }
     }

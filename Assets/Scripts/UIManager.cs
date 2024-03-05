@@ -8,6 +8,8 @@ public class UIManager : MonoBehaviour
     public GameObject PauseUI;
     public GameObject GameplayUI;
     public GameObject SettingsUI;
+    public GameObject GameOverUI;
+    public GameObject GameWinUI;
 
     // Start is called before the first frame update
 
@@ -17,6 +19,8 @@ public class UIManager : MonoBehaviour
         PauseUI.SetActive(false);
         GameplayUI.SetActive(false);
         SettingsUI.SetActive(false);
+        GameOverUI.SetActive(false);
+        GameWinUI.SetActive(false);
     }
 
     public void UIPause()
@@ -25,6 +29,8 @@ public class UIManager : MonoBehaviour
         PauseUI.SetActive(true);
         GameplayUI.SetActive(false);
         SettingsUI.SetActive(false);
+        GameOverUI.SetActive(false);
+        GameWinUI.SetActive(false);
     }
 
     public void UIGameplay()
@@ -33,6 +39,8 @@ public class UIManager : MonoBehaviour
         PauseUI.SetActive(false);
         GameplayUI.SetActive(true);
         SettingsUI.SetActive(false);
+        GameOverUI.SetActive(false);
+        GameWinUI.SetActive(false);
     }
 
     public void UISettings()
@@ -41,6 +49,28 @@ public class UIManager : MonoBehaviour
         PauseUI.SetActive(false);
         GameplayUI.SetActive(false);
         SettingsUI.SetActive(true);
+        GameOverUI.SetActive(false);
+        GameWinUI.SetActive(false);
 
+    }
+
+    public void UIGameOver()
+    {
+        MainMenuUI.SetActive(false);
+        PauseUI.SetActive(false);
+        GameplayUI.SetActive(false);
+        SettingsUI.SetActive(false);
+        GameOverUI.SetActive(true);
+        GameWinUI.SetActive(false);
+    }
+
+    public void UIGameWin()
+    {
+        MainMenuUI.SetActive(false);
+        PauseUI.SetActive(false);
+        GameplayUI.SetActive(false);
+        SettingsUI.SetActive(false);
+        GameOverUI.SetActive(false);
+        GameWinUI.SetActive(true);
     }
 }
