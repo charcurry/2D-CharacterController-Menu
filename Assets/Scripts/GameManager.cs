@@ -36,7 +36,7 @@ public class GameManager : MonoBehaviour
         {
             case GameState.MainMenu:
                 MainMenu();
-                break; 
+                break;
             case GameState.Gameplay:
                 Gameplay();
                 break;
@@ -44,7 +44,7 @@ public class GameManager : MonoBehaviour
                 Pause();
                 break;
             case GameState.Settings:
-                Settings(); 
+                Settings();
                 break;
         }
     }
@@ -86,6 +86,11 @@ public class GameManager : MonoBehaviour
             gameState = GameState.MainMenu;
             Time.timeScale = 1;
         }
+    }
+
+    public void QuitGame()
+    {
+        Application.Quit();
     }
 
 }
