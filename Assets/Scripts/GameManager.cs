@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
     private CharacterController2D player;
     public GameObject playerSprite;
     public GameObject spawnPoint;
+    public Vector2 lastPlayerPosition;
 
     public enum GameState
     {
@@ -22,10 +23,12 @@ public class GameManager : MonoBehaviour
     }
 
     public GameState gameState;
+    public GameState previousGameState;
 
     // Start is called before the first frame update
     void Start()
     {
+        spawnPoint = GameObject.FindWithTag("SpawnPoint");
         uiManager = FindObjectOfType<UIManager>();
         player = FindObjectOfType<CharacterController2D>();
         gameState = GameState.MainMenu;
@@ -55,8 +58,10 @@ public class GameManager : MonoBehaviour
                 Settings();
                 break;
             case GameState.GameOver:
+                GameOver();
                 break;
             case GameState.GameWin:
+                GameWin();
                 break;
         }
     }
@@ -72,32 +77,49 @@ public class GameManager : MonoBehaviour
     {
         Cursor.visible = false;
         playerSprite.SetActive(true);
+        lastPlayerPosition = player.transform.position;
         uiManager.UIGameplay();
     }
 
     private void Settings()
     {
         Cursor.visible = true;
+        playerSprite.SetActive(false);
         uiManager.UISettings();
     }
 
     private void Pause()
     {
         Cursor.visible = true;
+        playerSprite.SetActive(true);
         uiManager.UIPause();
+    }
+
+    private void GameOver() 
+    {
+        Cursor.visible = true;
+        playerSprite.SetActive(false);
+        uiManager.UIGameOver();
+    }
+
+    private void GameWin()
+    {
+        Cursor.visible = true;
+        playerSprite.SetActive(false);
+        uiManager.UIGameWin();
     }
 
     public void PauseGame()
     {
-        if (gameState != GameState.Pause)
+        if (gameState != GameState.Pause && gameState == GameState.Gameplay)
         {
+            previousGameState = gameState;
             gameState = GameState.Pause;
             Time.timeScale = 0;
         }
         else if (gameState == GameState.Pause)
         {
-            //this is where i would go back to the previous state
-            gameState = GameState.Gameplay;
+            gameState = previousGameState;
             Time.timeScale = 1;
         }
     }
@@ -107,10 +129,19 @@ public class GameManager : MonoBehaviour
         Application.Quit();
     }
 
+    public void OpenSettings()
+    {
+        Settings();
+    }
+
     public void MovePlayerToSpawnPoint()
     {
-        spawnPoint = GameObject.FindWithTag("SpawnPoint");
         player.transform.position = spawnPoint.transform.position;
+    }
+
+    public void MovePlayerToPreviousLocation()
+    {
+        player.transform.position = lastPlayerPosition;
     }
 
 }

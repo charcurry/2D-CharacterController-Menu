@@ -14,4 +14,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Gameplay_Grass2.unity
     guid: 378acee03b2a64345aa87e7e4c39ea55
+  - enabled: 1
+    path: Assets/Scenes/Settings.unity
+    guid: 87b2a428319344345929ccb774b89de7
+  - enabled: 1
+    path: Assets/Scenes/GameWin.unity
+    guid: a3f69964162ca4b448702396a877542c
+  - enabled: 1
+    path: Assets/Scenes/GameOver.unity
+    guid: 38b7211778b791e47875645c1ce275df
   m_configObjects: {}
