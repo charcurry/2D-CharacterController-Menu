@@ -65615,6 +65615,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 148284282958017310, guid: 02168ffdf28e29f4fba27943e27ddfe6, type: 3}
+      propertyPath: m_FlipX
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 148284282958017310, guid: 02168ffdf28e29f4fba27943e27ddfe6, type: 3}
+      propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 148284282958017310, guid: 02168ffdf28e29f4fba27943e27ddfe6, type: 3}
+      propertyPath: m_DrawMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 148284282958017310, guid: 02168ffdf28e29f4fba27943e27ddfe6, type: 3}
+      propertyPath: m_MaskInteraction
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 7592697722472847137, guid: 02168ffdf28e29f4fba27943e27ddfe6, type: 3}
       propertyPath: m_LocalPosition.x
       value: 1.5
