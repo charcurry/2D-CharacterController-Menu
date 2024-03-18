@@ -58,7 +58,9 @@ public class LevelManager : MonoBehaviour
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
+        gameManager.spawnPoint = GameObject.FindWithTag("SpawnPoint");
         gameManager.MovePlayerToSpawnPoint();
+
         SceneManager.sceneLoaded -= OnSceneLoaded;
     }
 
